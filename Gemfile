@@ -11,6 +11,7 @@ gem 'sinatra', '~> 2.2.0', require: 'sinatra/base'
 gem 'sinatra-contrib', '~> 2.2.0'
 gem 'faraday', '~> 1.0.1'
 gem 'faraday_middleware', '~> 1.0.0'
+gem 'bunny'
 
 gem 'config', '~> 2.2.1'
 gem 'i18n', '~> 1.8.2'

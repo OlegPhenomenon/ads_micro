@@ -1,7 +1,7 @@
 require 'dry/initializer'
 require_relative 'api'
 
-module AuthService
+module GeocoderService
   class Client
     extend Dry::Initializer[undefined: false]
     include Api

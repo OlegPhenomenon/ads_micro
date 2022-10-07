@@ -8,6 +8,8 @@ class AdRoutes < Application
       ads = ads.paginate(page.to_i, Settings.pagination.page_size)
       serializer = AdSerializer.new(ads.all, links: pagination_links(ads))
 
+      # RabbitMq.channel
+
       json serializer.serializable_hash
     end
 

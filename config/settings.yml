@@ -5,3 +5,5 @@ db:
   password: postgres
 pagination:
   page_size: 10
+rabbitmq:
+  consumer_pool: 10
