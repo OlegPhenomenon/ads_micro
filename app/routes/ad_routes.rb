@@ -1,3 +1,5 @@
+require 'json'
+
 class AdRoutes < Application
   helpers PaginationLinks, Auth
 
@@ -8,8 +10,6 @@ class AdRoutes < Application
       ads = ads.paginate(page.to_i, Settings.pagination.page_size)
       serializer = AdSerializer.new(ads.all, links: pagination_links(ads))
 
-      # RabbitMq.channel
-
       json serializer.serializable_hash
     end
 
@@ -18,9 +18,28 @@ class AdRoutes < Application
 
       result = Ads::CreateService.call(
         ad: ad_params[:ad],
-        user_id: user_id
+        # user_id: user_id
+        user_id: 1
       )
 
+      if result.success?
+        serializer = AdSerializer.new(result.ad)
+
+        status 201
+        json serializer.serializable_hash
+      else
+        status 422
+        error_response result.ad
+      end
+    end
+
+    put do
+      push = JSON.parse(request.body.read)
+      id = push["id"]
+      lat = push["coordinates"]["lat"]
+      lon = push["coordinates"]["lon"]
+
+      result = Ads::UpdateService.call(id, lat: lat, lon: lon)
       if result.success?
         serializer = AdSerializer.new(result.ad)
 
