@@ -7,3 +7,6 @@ pagination:
   page_size: 10
 rabbitmq:
   consumer_pool: 10
+service:
+  auth:
+    url: http://localhost:3010/v1
