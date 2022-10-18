@@ -1,4 +1,5 @@
 require 'json'
+require 'ougai'
 
 class AdRoutes < Application
   helpers PaginationLinks, Auth
@@ -19,7 +20,6 @@ class AdRoutes < Application
       result = Ads::CreateService.call(
         ad: ad_params[:ad],
         user_id: user_id
-        # user_id: 1
       )
 
       if result.success?
@@ -42,6 +42,12 @@ class AdRoutes < Application
       result = Ads::UpdateService.call(id, lat: lat, lon: lon)
       if result.success?
         serializer = AdSerializer.new(result.ad)
+
+        logger.info(
+          'updated coordinates',
+          city: result.ad.city,
+          coordinates: [result.ad.lat, result.ad.lon]
+        )
 
         status 201
         json serializer.serializable_hash

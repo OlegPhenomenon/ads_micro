@@ -33,5 +33,7 @@ group :test do
 end
 
 gem "rack-ougai", "~> 0.3.0"
+gem "ougai", "~> 2.0"
 
 gem "rack-request-id", "~> 0.0.4"
+gem 'amazing_print'

@@ -7,6 +7,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    amazing_print (1.4.0)
     amq-protocol (2.3.2)
     bunny (2.19.0)
       amq-protocol (~> 2.3, >= 2.3.1)
@@ -129,6 +130,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport (~> 6.0.0)
+  amazing_print
   bunny
   config (~> 2.2.1)
   database_cleaner-sequel (~> 1.8.0)
@@ -139,6 +141,7 @@ DEPENDENCIES
   faraday_middleware (~> 1.0.0)
   fast_jsonapi (~> 1.5)
   i18n (~> 1.8.2)
+  ougai (~> 2.0)
   pg (~> 1.2.3)
   puma (~> 4.3.12)
   rack-ougai (~> 0.3.0)
