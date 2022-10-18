@@ -1,0 +1,5 @@
+/log/*
+!/log/.keep
+
+config/settings.local.yml
+config/settings/*.loca.yml
