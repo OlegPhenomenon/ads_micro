@@ -1,7 +1,7 @@
 module BasicService
   module ClassMethods
-    def call(*args)
-      new(*args).call
+    def call(**args)
+      new(**args).call
     end
   end
 
@@ -13,8 +13,8 @@ module BasicService
 
   attr_reader :errors
 
-  def initialize(*args)
-    super(*args)
+  def initialize(**args)
+    super(**args)
     @errors = []
   end
 

@@ -14,7 +14,7 @@ module Ads
     attr_reader :ad
 
     def call
-      @ad = ::Ad.new(@ad.to_h)
+      @ad = ::Ad.new(ad.to_h)
       @ad.user_id = @user_id
 
       if @ad.valid?

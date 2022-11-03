@@ -3,11 +3,16 @@ app:
 db:
   adapter: postgresql
   host: localhost
-  user: postgres
-  password: postgres
+  user: ads
+  password: password
+  url: <%= ENV['ADS_DATABASE_URL'] %>
 pagination:
   page_size: 10
 rabbitmq:
+  rabbitmq:
+    host: <%= ENV['RABBITMQ_HOST'] %>
+    username: <%= ENV['RABBITMQ_USER'] %>
+    password: <%= ENV['RABBITMQ_PASSWORD'] %>
   consumer_pool: 10
 service:
   auth:

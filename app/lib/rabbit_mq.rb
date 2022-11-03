@@ -5,7 +5,11 @@ module RabbitMq
 
   def connection
     @mutex.synchronize do
-      @connection ||= Bunny.new.start
+      @connection ||= Bunny.new(
+        host: Settings.rabbitmq.host,
+        username: 'ads',
+        password: 'password'
+      ).start
     end
   end
 
@@ -14,7 +18,6 @@ module RabbitMq
   end
 
   def consumer_channel
-    # See http://rubybunny.info/articles/concurrency.html#consumer_work_pools
     Thread.current[:rabbitmq_consumer_channel] ||=
       connection.create_channel(
         nil,
